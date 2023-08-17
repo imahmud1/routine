@@ -15,15 +15,72 @@ body {
     margin-bottom: 20px;
 }
 
-input {
+.input-container > * {
     flex: 1;
     padding: 10px;
     margin-right: 10px;
+    line-height: 1.5;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.input-container > *:last-child {
+    margin-right: 0;
 }
 
 button {
-    padding: 10px 20px;
+    padding: 10px 15px;
     cursor: pointer;
+}
+
+.select-container {
+    position: relative;
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    margin-right: 10px; /* Add right margin to create space between select and button */
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    line-height: 1.5;
+    border: 1px solid #ccc; /* Match border with other inputs */
+    background: white;
+    margin: 0; /* Remove margin */
+}
+
+.checkmark-icon {
+    font-size: 20px; /* Adjust size as needed */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.input-container > button {
+    flex: 0; /* Button does not grow */
+    padding: 6px 10px; /* Adjust padding to reduce top and bottom space */
+    margin-left: 0; /* Remove left margin if needed */
+    width: auto; /* Adjust width to match other fields */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.input-container > button:hover {
+    background-color: #00b300; /* Green color for hover effect */
+}
+
+.select-container::after {
+    content: '▼';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #333;
 }
 
 table {
@@ -47,14 +104,13 @@ thead {
     color: white;
     border: none;
     transition: background-color 0.3s;
-
 }
 
 .save-button-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100px; /* You can adjust this value to move the button up or down */
+    height: 100px;
 }
 
 .action-button:hover {

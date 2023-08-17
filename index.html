@@ -12,14 +12,23 @@
         <div class="input-container">
             <input type="date" id="examDate" placeholder="Exam Date">
             <input type="text" id="examName" placeholder="Exam Name">
-            <button class="action-button" onclick="addExam()">Add Exam</button>
+            <div class="select-container">
+                <select id="examSlot">
+                    <option value="slot1">Slot 1</option>
+                    <option value="slot2">Slot 2</option>
+                </select>
+            </div>
+            <button class="action-button" onclick="addExam()">
+                <span class="checkmark-icon">&#10003;</span>
+            </button>
         </div>
         <div id="table-container">
             <table id="scheduleTable">
                 <thead>
                     <tr>
                         <th>Date</th>
-                        <th>Exam Name</th>
+                        <th>9:15 am - 10:45 am</th>
+                        <th>2:30 pm - 4:00 pm</th>
                         <th class="edit-column">Edit</th>
                         <th class="delete-column">Delete</th>
                     </tr>
