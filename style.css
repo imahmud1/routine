@@ -57,16 +57,21 @@ select {
 
 .checkmark-icon {
     font-size: 20px; /* Adjust size as needed */
-    display: inline-block;
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
 .input-container > button {
     flex: 0; /* Button does not grow */
-    padding: 6px 10px; /* Adjust padding to reduce top and bottom space */
+    padding: 6px 10px; /* Match padding with other inputs */
     margin-left: 0; /* Remove left margin if needed */
     width: auto; /* Adjust width to match other fields */
     transition: background-color 0.3s; /* Smooth transition for hover effect */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .input-container > button:hover {
@@ -174,4 +179,53 @@ th, td {
 
 .hide-actions .table-button {
     display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    .input-container {
+        flex-wrap: wrap; /* Allow the flex items to wrap */
+    }
+
+    .input-container > * {
+        flex: 0 0 100%; /* Each flex item takes 100% of the container's width */
+        margin-right: 0;
+        margin-bottom: 10px; /* Space between stacked elements */
+    }
+
+    .input-container > button {
+        flex: 0 0 100%; /* Button takes 100% of the container's width */
+        margin-bottom: 0; /* No margin for the last button */
+        padding: 10px; /* Match padding with other inputs */
+    }
+
+    button, select, input {
+        font-size: 14px; /* Smaller font size */
+    }
+
+    .table-button {
+        font-size: 16px;
+    }
+
+    .checkmark-icon {
+        font-size: 18px; /* Adjust size as needed */
+    }
+}
+
+/* Responsive Design for Small Screens (Phones) */
+@media only screen and (max-width: 480px) {
+    body {
+        padding: 10px; /* Reduce overall padding */
+    }
+
+    .container {
+        max-width: 100%; /* Allow the container to take full width */
+    }
+
+    #table-container {
+        overflow-x: auto; /* Allow horizontal scrolling for the table */
+    }
+
+    h1 {
+        font-size: 20px; /* Reduce title font size */
+    }
 }
