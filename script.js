@@ -71,6 +71,7 @@ function deleteExam(button) {
 }
 
 function saveAsImage() {
+    var tableContainer = document.getElementById('table-container');
     var table = document.getElementById('scheduleTable');
     var editColumn = table.getElementsByClassName('edit-column')[0]; // Select Edit column
     var deleteColumn = table.getElementsByClassName('delete-column')[0]; // Select Delete column
@@ -84,13 +85,18 @@ function saveAsImage() {
         row.cells[deleteColumnIndex].style.display = 'none';
     });
 
-    var node = document.getElementById('table-container');
-    domtoimage.toJpeg(node, { quality: 1 })
+    // Temporarily apply styles that match the desktop view
+    tableContainer.style.width = '800px'; // Match container width
+
+    domtoimage.toJpeg(tableContainer, { quality: 1 })
         .then(function (dataUrl) {
             var link = document.createElement('a');
             link.download = 'exam_schedule.jpg';
             link.href = dataUrl;
             link.click();
+
+            // Revert to original styles
+            tableContainer.style.width = '';
 
             // Show the Edit and Delete columns again
             Array.from(table.rows).forEach(row => {
@@ -100,6 +106,9 @@ function saveAsImage() {
         })
         .catch(function (error) {
             console.error('An error occurred:', error);
+
+            // Revert to original styles even in case of an error
+            tableContainer.style.width = '';
 
             // Show the Edit and Delete columns again in case of an error
             Array.from(table.rows).forEach(row => {
