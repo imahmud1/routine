@@ -47,23 +47,31 @@ function editExam(button) {
     if (editButton.innerHTML === '✎') { // If the Edit button is clicked
         var existingDate = dateCell.innerHTML;
         var dateParts = existingDate.split("-");
-        var formattedDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0]; // Reformatting date as YYYY-MM-DD
-        dateCell.innerHTML = '<input type="date" value="' + formattedDate + '">';
-        slot1Cell.innerHTML = '<input type="text" value="' + slot1Cell.innerHTML + '">';
-        slot2Cell.innerHTML = '<input type="text" value="' + slot2Cell.innerHTML + '">';
+        var formattedDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
+        dateCell.innerHTML = '<input class="table-input" type="date" value="' + formattedDate + '">';
+        slot1Cell.innerHTML = '<input class="table-input" type="text" value="' + slot1Cell.innerHTML + '">';
+        slot2Cell.innerHTML = '<input class="table-input" type="text" value="' + slot2Cell.innerHTML + '">';
+        dateCell.classList.add('editable');
+        slot1Cell.classList.add('editable');
+        slot2Cell.classList.add('editable');
         editButton.innerHTML = '✔';
     } else { // If the Save button (✔) is clicked
         var newDate = dateCell.firstChild.value;
         var dateParts = newDate.split("-");
-        newDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0]; // Reformatting date as DD-MM-YYYY
+        newDate = dateParts[2] + "-" + dateParts[1] + "-" + dateParts[0];
         var newSlot1Name = slot1Cell.firstChild.value;
         var newSlot2Name = slot2Cell.firstChild.value;
+
         dateCell.innerHTML = newDate;
         slot1Cell.innerHTML = newSlot1Name;
         slot2Cell.innerHTML = newSlot2Name;
+        dateCell.classList.remove('editable');
+        slot1Cell.classList.remove('editable');
+        slot2Cell.classList.remove('editable');
         editButton.innerHTML = '✎';
     }
 }
+
 
 function deleteExam(button) {
     var row = button.parentNode.parentNode;

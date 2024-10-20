@@ -19,12 +19,17 @@ body {
     margin-right: 10px;
 }
 
-.input-container {
+.input-container, .action-button {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-container {
     margin-bottom: 20px;
 }
 
-.input-container > * {
+.input-container > *, .input-container > button {
     flex: 1;
     padding: 10px;
     margin-right: 10px;
@@ -39,7 +44,7 @@ body {
     margin-right: 0;
 }
 
-button {
+button, #scheduleTable button {
     padding: 10px 15px;
     cursor: pointer;
 }
@@ -101,11 +106,13 @@ table {
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
     padding: 10px;
-    text-align: left;
+    text-align: center; /* Alignment for table cells */
     border: 1px solid #ccc;
 }
 
@@ -163,6 +170,22 @@ th, td {
 
 #scheduleTable button:hover {
     background-color: #0056b3;
+}
+
+.editable {
+    font-weight: bold;
+    background-color: rgba(100, 149, 237, 0.1); /* Light blue background with low opacity */
+    border: 2px dashed #1E90FF; /* Dashed border */
+    cursor: pointer; /* Changes the cursor to a hand to indicate clickability */
+}
+
+.table-input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: inherit;
+    color: inherit;
 }
 
 .table-button {
